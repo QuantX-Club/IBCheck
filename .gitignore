@@ -1,4 +1,5 @@
 # Security & Environment Variables
+.vscode/
 .env
 
 # Java Build Output & Artifacts
