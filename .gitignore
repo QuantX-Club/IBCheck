@@ -1,0 +1,17 @@
+# Security & Environment Variables
+.env
+
+# Java Build Output & Artifacts
+java/bin/
+java/IBCheck.jar
+*.class
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# Archives
+*.zip
