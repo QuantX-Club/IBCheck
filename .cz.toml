@@ -1,0 +1,14 @@
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.0.1"
+tag_format = "v$version"
+update_changelog_on_bump = true
+
+# Define which prefixes trigger a bump and show up in CHANGELOG.md
+bump_pattern = "^(feat|fix|docs|refactor|perf)"
+bump_map = {"feat" = "MINOR", "fix" = "PATCH", "docs" = "PATCH", "refactor" = "PATCH", "perf" = "PATCH"}
+
+# Ensure synchronized version updates across the project
+version_files = [
+    'README.md:\*\*Version\*\*'
+]

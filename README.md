@@ -7,11 +7,10 @@ A professional utility to verify connectivity with Interactive Brokers (IBKR) TW
 ```text
 IBCheck/
 ├── java/                    # Primary Java implementation
-│   ├── bin/                 # Compiled .class files (Ignored by Git)
 │   ├── lib/                 # Third-party libraries (.jar files tracked by LFS)
-│   ├── src/                 # Java source code (IBCheck.java)
-│   ├── build.sh             # Shell script to compile and package the project
-│   └── IBCheck.jar          # Packaged executable JAR (Ignored by Git)
+│   ├── src/                 
+│   │   └── IBCheck.java     # Main Java source code (Core Logic)
+│   └── build.sh             # Shell script to compile and package the project
 ├── python/                  # Python implementation
 │   └── IBCheck.py           # Python connection test script
 ├── .env                     # Local environment variables (Ignored by Git)
@@ -25,7 +24,7 @@ IBCheck/
 1. **IBKR Software**: TWS or IB Gateway must be running.
 2. **API Configuration**: Enable "Enable ActiveX and Socket Clients" in IBKR settings.
 3. **Java**: JDK 11 or higher.
-4. **Python**: **Python 3.13 or higher** is required.
+4. **Python**: Python 3.13 or higher is required.
 
 ---
 
@@ -97,12 +96,16 @@ java -jar IBCheck.jar
 java -jar IBCheck.jar --port 7497
 
 # Connect to a remote machine using Python
-python python/IBCheck.py --host "192.168.1.10" --port 4002
+python python/IBCheck.py --host "127.0.0.1" --port 4002
 ```
 
 ---
 
 ## Version Control Notes
 
-* **Git LFS**: All `.jar` files in `java/lib/` are managed via Git LFS.
-* **Exclusions**: Build artifacts (`bin/`, `IBCheck.jar`), local settings (`.env`), and compressed archives (`*.zip`) are ignored to keep the repository clean.
+* **Git LFS**: All `.jar` files in `java/lib/` are managed via Git LFS to keep the repository size manageable.
+* **Exclusions**: Build artifacts (`bin/`, `IBCheck.jar`), local settings (`.env`), and compressed archives (`*.zip`) are ignored via `.gitignore`.
+
+---
+
+Version: 0.0.1
