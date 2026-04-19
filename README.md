@@ -152,4 +152,4 @@ python python/IBCheck.py --host "127.0.0.1" --port 4002
 
 ---
 
-**Version**: 0.1.1
+**Version**: 0.2.0
