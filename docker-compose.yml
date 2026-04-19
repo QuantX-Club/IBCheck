@@ -1,0 +1,17 @@
+# Docker Compose configuration for Interactive Brokers Gateway
+services:
+  ib-gateway:
+    container_name: ib-gateway
+    image: ghcr.io/gnzsnz/ib-gateway:stable
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"   # Limit single log file to 10MB
+        max-file: "3"     # Keep only the last 3 log files
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:4001:4003" # Live  trading port mapped to 4003 internally
+      - "127.0.0.1:4002:4004" # Paper trading port mapped to 4004 internally
+      - "127.0.0.1:5900:5900" # VNC   remote desktop access      

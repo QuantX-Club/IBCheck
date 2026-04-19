@@ -6,6 +6,7 @@ A professional utility to verify connectivity with Interactive Brokers (IBKR) TW
 
 ```text
 IBCheck/
+├── docker-compose.yml       # IB Gateway container definition
 ├── java/                    # Primary Java implementation
 │   ├── lib/                 # Third-party libraries (.jar files tracked by LFS)
 │   ├── src/                 
@@ -13,6 +14,7 @@ IBCheck/
 │   └── build.sh             # Shell script to compile and package the project
 ├── python/                  # Python implementation
 │   └── IBCheck.py           # Python connection test script
+├── .env.example             # Template IB Gateway environment variables
 ├── .env                     # Local environment variables (Ignored by Git)
 ├── .gitattributes           # Git LFS configuration for .jar files
 └── .gitignore               # Git exclusion rules
@@ -25,6 +27,48 @@ IBCheck/
 2. **API Configuration**: Enable "Enable ActiveX and Socket Clients" in IBKR settings.
 3. **Java**: JDK 11 or higher.
 4. **Python**: Python 3.13 or higher is required.
+5. **Docker**: Docker Desktop / Docker Engine (for IB Gateway container).
+
+---
+
+## Docker Compose (IB Gateway)
+
+Reference: [gnzsnz/ib-gateway-docker](https://github.com/gnzsnz/ib-gateway-docker)
+
+### 1. Create `.env` from `.env.example`
+
+```bash
+cp .env.example .env
+```
+
+Then edit `.env` and fill in at least:
+
+- `TWS_USERID`
+- `TWS_PASSWORD`
+- `TRADING_MODE` (`paper` or `live`)
+- `VNC_SERVER_PASSWORD` (optional but recommended)
+
+### 2. Start IB Gateway
+
+```bash
+docker compose up -d
+```
+
+### 3. Verify status and logs
+
+```bash
+docker compose ps
+docker compose logs --tail=100 ib-gateway
+```
+
+### 4. Recreate container after env changes
+
+If you changed `.env` and want a clean restart:
+
+```bash
+docker compose down
+docker compose up -d
+```
 
 ---
 
