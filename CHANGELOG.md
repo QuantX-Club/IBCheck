@@ -1,3 +1,9 @@
+## v0.3.0 (2026-06-02)
+
+### Feat
+
+- **ibcheck**: check SPX market data after connection
+
 ## v0.2.0 (2026-04-19)
 
 ### Feat
