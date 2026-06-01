@@ -1,6 +1,6 @@
 # IBCheck - IBKR API Connection Test Tool
 
-A professional utility to verify connectivity with Interactive Brokers (IBKR) TWS or IB Gateway, primarily implemented in Java with a Python alternative.
+A professional utility to verify connectivity with Interactive Brokers (IBKR) TWS or IB Gateway, primarily implemented in Java with a Python alternative. After the API connection and account list are confirmed, IBCheck now also checks whether an SPX market data snapshot can be fetched.
 
 ## Project Structure
 
@@ -129,15 +129,23 @@ Both implementations share the same CLI interface:
 | `-h`, `--help` | Show this help message and exit | N/A |
 | `-host`, `--host` | Set the IP address or host name of TWS/Gateway | `127.0.0.1` |
 | `-port`, `--port` | Set the socket port number | `4002` |
+| `--skip-spx` | Skip the SPX market data check | `false` |
+| `--spx-timeout` | Seconds to wait for SPX data | `15` |
 
 ### Usage Examples
 
 ```bash
-# Basic test with default settings
+# Basic test with default settings; also checks SPX data
 java -jar IBCheck.jar
 
 # Connect to a specific port
 java -jar IBCheck.jar --port 7497
+
+# Increase the SPX data wait time
+java -jar IBCheck.jar --host "127.0.0.1" --port 4002 --spx-timeout 20
+
+# Only check the IBKR API connection and accounts
+java -jar IBCheck.jar --skip-spx
 
 # Connect to a remote machine using Python
 python python/IBCheck.py --host "127.0.0.1" --port 4002
@@ -152,4 +160,4 @@ python python/IBCheck.py --host "127.0.0.1" --port 4002
 
 ---
 
-**Version**: 0.2.0
+**Version**: 0.3.0
